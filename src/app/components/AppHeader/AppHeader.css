@@ -2,7 +2,8 @@
   display: flex;
   flex: auto;
   justify-content: center;
-  height: 70px;
+  align-items: center;
+  height: 80px;
   width: 100%;
   background: rgb(255, 255, 255);
   box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
