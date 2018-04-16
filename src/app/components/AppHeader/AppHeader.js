@@ -4,7 +4,7 @@ import './AppHeader.css';
 
 const AppHeader = () => (
   <div className="app-header">
-    <h3>Header</h3>
+    <img className="logo" src={require('../../assets/images/jdlt-logo.png')} alt="logo"/>
   </div>
 )
 
