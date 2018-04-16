@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App';
 
-const store = {};
+import store from './store/configureStore';
 
 ReactDOM.render(
   <Provider store={store}>
