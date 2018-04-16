@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const DIST_DIR = path.resolve(__dirname, "dist");
+
 const config = {
   entry: ['babel-polyfill', './src/app/index.js'],
   output: {
-    path: './dist/app/',
+    path: DIST_DIR + '/app/',
     filename: 'bundle.js',
     publicPath: '/app/'
   },
