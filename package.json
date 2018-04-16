@@ -4,7 +4,9 @@
   "description": "JDLT Developer Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "yarn build",
+    "build": "mkdir dist &> /dev/null || : && cp src/index.html dist/index.html && webpack-dev-server --mode development --content-base src/ --inline --hot",
+    "build:prod": "webpack -p --mode production && cp src/index.html dist/index.html"
   },
   "repository": {
     "type": "git",
