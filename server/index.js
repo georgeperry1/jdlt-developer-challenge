@@ -12,9 +12,7 @@ require('./db');
 //Middleware
 app.use(logger());
 app.use(cors());
-app.use(bodyParser({
-  multipart:true
-}));
+app.use(bodyParser());
 routes(app);
 app.use(serve(path.join(__dirname, 'public')));
 app.use(compress());
