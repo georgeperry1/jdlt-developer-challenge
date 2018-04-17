@@ -5,6 +5,8 @@ const routes = function (app) {
   router.get('/suppliers', controller.getSuppliers);
   router.post('/suppliers', controller.addSupplier);
   router.post('/suppliers/:id', controller.addProduct);
+  router.delete('/suppliers', controller.deleteSupplier);
+  router.delete('/suppliers/:id', controller.deleteProduct);
 
   router.options('/', options);
   router.head('/', head);
