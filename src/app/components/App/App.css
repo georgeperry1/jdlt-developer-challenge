@@ -11,5 +11,5 @@
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
-  background: #f6f5f5;
+  background: linear-gradient(to right, #407ff7, #2ef081);
 }
