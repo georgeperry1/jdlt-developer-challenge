@@ -46,7 +46,10 @@ module.exports.addSupplier = async (ctx, next) => {
     supplier.products = products.map(product => product._id);
     await supplier.save();
     // Return supplier
-    ctx.body = supplier;
+    ctx.body = {
+      suppliers,
+      products
+    };
     ctx.status = 201;
   }
   catch (error) {
@@ -81,8 +84,12 @@ module.exports.addProduct = async (ctx, next) => {
     supplier.products = [...supplier.products, product._id];
     await supplier.save();
     await product.save();
+    const suppliers = await Supplier.find();
     // Return Product
-    ctx.body = product;
+    ctx.body = {
+      suppliers,
+      product
+    };
     ctx.status = 201;
   }
   catch (error) {
@@ -101,8 +108,17 @@ module.exports.deleteSupplier = async (ctx, next) => {
     const supplier = await Supplier.findOneAndRemove({
       _id: id
     });
+    const promises = await supplier.products.map(product => Product.findOneAndRemove({
+      _id: product._id
+    }));
+    const newProducts = await Promise.all(promises);
+    const suppliers = await Supplier.find();
+    const products = await Product.find();
     // Return Suppliers
-    ctx.body = `${supplier.name} has been successfully deleted!`;
+    ctx.body = {
+      suppliers,
+      products
+    };
     ctx.status = 200;
   }
   catch (error) {
@@ -132,8 +148,13 @@ module.exports.deleteProduct = async (ctx, next) => {
       return product._id !== productId;
     });
     await supplier.save();
+    const suppliers = await Supplier.find();
+    const products = await Product.find();
     // Return Suppliers
-    ctx.body = `${product.name} has been successfully deleted!`;
+    ctx.body = {
+      suppliers,
+      products
+    };
     ctx.status = 200;
   }
   catch (error) {

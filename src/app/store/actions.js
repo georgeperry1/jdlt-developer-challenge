@@ -43,7 +43,7 @@ export const addProduct = (supplierId, product) => {
   }
 };
 
-export const deleteSupplier = (productId) => {
+export const deleteProduct = (supplierId, productId) => {
   return {
     type: types.DELETE_PRODUCT,
     meta: {

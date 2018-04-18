@@ -51,7 +51,8 @@ const apiService = store => next => action => {
       newAction = {
         ...action,
         type: types.ADD_SUPPLIER_SUCCESS,
-        supplier: newSupplier,
+        supplier: newSupplier.supplier,
+        products: newSupplier.products
       }
       store.dispatch(newAction);
     });
@@ -63,19 +64,23 @@ const apiService = store => next => action => {
       method: action.meta.method,
     })
     .then(response => {
-      if (response.status === 200) {
-        newAction = {
-          ...action,
-          type: types.DELETE_SUPPLIER_SUCCESS,
-        }
-        store.dispatch(newAction);
-      } else {
+      if (response.status === 400) {
         newAction = {
           ...action,
           type: types.DELETE_SUPPLIER_FAILURE,
         }
         store.dispatch(newAction);
       }
+      return response.json()
+    })
+    .then(newSuppliers => {
+      newAction = {
+        ...action,
+        type: types.DELETE_SUPPLIER_SUCCESS,
+        suppliers: newSuppliers.suppliers,
+        products: newSuppliers.products,
+      }
+      store.dispatch(newAction);
     });
   }
 
@@ -100,7 +105,8 @@ const apiService = store => next => action => {
       newAction = {
         ...action,
         type: types.ADD_PRODUCT_SUCCESS,
-        product: newProduct,
+        product: newProduct.product,
+        supplier: newProduct.supplier
       }
       store.dispatch(newAction);
     });
@@ -112,19 +118,23 @@ const apiService = store => next => action => {
       method: action.meta.method,
     })
     .then(response => {
-      if (response.status === 200) {
-        newAction = {
-          ...action,
-          type: types.DELETE_PRODUCT_SUCCESS,
-        }
-        store.dispatch(newAction);
-      } else {
+      if (response.status === 400) {
         newAction = {
           ...action,
           type: types.DELETE_PRODUCT_FAILURE,
         }
         store.dispatch(newAction);
       }
+      return response.json()
+    })
+    .then(newProducts => {
+      newAction = {
+        ...action,
+        type: types.DELETE_PRODUCT_SUCCESS,
+        suppliers: newProducts.suppliers,
+        products: newProducts.products,
+      }
+      store.dispatch(newAction);
     });
   }
   return next(action);
