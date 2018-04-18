@@ -10,6 +10,6 @@
 .app {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to right, #407ff7, #2ef081);
 }

@@ -16,7 +16,7 @@ export default (state = defaultState, action) => {
     case types.GET_SUPPLIERS_SUCCESS:
       return {
         ...state,
-        suppliers: [...state.suppliers, action.suppliers],
+        suppliers: action.suppliers,
         products: [...state.products, action.products],
         isFetching: false,
       }

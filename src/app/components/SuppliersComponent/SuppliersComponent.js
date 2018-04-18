@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import * as actions from '../../store/actions';
+import Loader from '../Loader';
 import SuppliersListComponent from '../SuppliersListComponent';
 
 import './SuppliersComponent.css';
@@ -14,16 +15,28 @@ class SuppliersComponent extends Component {
 
   renderSuppliersList() {
     const { suppliers } = this.props;
+    if (!suppliers.length) {
+      return <h3>No suppliers, please create one</h3>;
+    }
     return (
       <SuppliersListComponent suppliers={suppliers} />
     );
   }
 
+  renderLoading = () => <Loader />;
+
   render() {
+    const { isFetching } = this.props;
     return (
       <div className="suppliers-container">
         <h2>Suppliers</h2>
-        {this.renderSuppliersList()}
+        {isFetching ? (
+          this.renderLoading()
+        ) : (
+          <div>
+            {this.renderSuppliersList()}
+          </div>
+        )}
       </div>
     );
   }
