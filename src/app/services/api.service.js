@@ -17,7 +17,8 @@ const apiService = store => next => action => {
         newAction = {
           ...action,
           type: types.GET_SUPPLIERS_SUCCESS,
-          suppliers: fetchedSuppliers,
+          suppliers: fetchedSuppliers.suppliers,
+          products: fetchedSuppliers.products,
         }
         store.dispatch(newAction);
       } else {
