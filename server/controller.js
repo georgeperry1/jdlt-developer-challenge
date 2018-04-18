@@ -64,7 +64,7 @@ module.exports.addProduct = async (ctx, next) => {
       ctx.status = 404
       ctx.body = {
         errors:[
-          'Supplier name cannot be empty!'
+          'Product name cannot be empty!'
         ]
       };
       return await next();
@@ -95,6 +95,20 @@ module.exports.addProduct = async (ctx, next) => {
 
 module.exports.deleteSupplier = async (ctx, next) => {
   if ('DELETE' != ctx.method) return await next();
+  try {
+    const supplierToBeDeleted = ctx.params.supplierId;
+    const suppliers = await Supplier.findOneAndRemove({
+      _id: supplierToBeDeleted,
+    });
+    await suppliers.save();
+    ctx.status = 204;
+  }
+  catch (error) {
+    if (error) {
+      ctx.body = error;
+      ctx.status = 400;
+    }
+  }
 }
 
 module.exports.deleteProduct = async (ctx, next) => {
