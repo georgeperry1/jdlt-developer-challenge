@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import * as actions from '../../store/actions';
+import SuppliersListComponent from '../SuppliersListComponent';
 
 import './SuppliersComponent.css';
 
@@ -11,16 +12,18 @@ class SuppliersComponent extends Component {
     this.props.getSuppliers();
   }
 
-  renderSuppliers() {
+  renderSuppliersList() {
     const { suppliers } = this.props;
-    console.log('Suppliers:', suppliers);
+    return (
+      <SuppliersListComponent suppliers={suppliers} />
+    );
   }
 
   render() {
     return (
       <div className="suppliers-container">
         <h2>Suppliers</h2>
-        {this.renderSuppliers()}
+        {this.renderSuppliersList()}
       </div>
     );
   }
