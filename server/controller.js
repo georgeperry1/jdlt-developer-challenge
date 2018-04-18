@@ -45,7 +45,7 @@ module.exports.addSupplier = async (ctx, next) => {
     const products = await Promise.all(promises);
     supplier.products = products.map(product => product._id);
     await supplier.save();
-    //Return supplier
+    // Return supplier
     ctx.body = supplier;
     ctx.status = 201;
   }
@@ -59,6 +59,38 @@ module.exports.addSupplier = async (ctx, next) => {
 
 module.exports.addProduct = async (ctx, next) => {
   if ('POST' != ctx.method) return await next();
+  try {
+    if (!ctx.request.body.name) {
+      ctx.status = 404
+      ctx.body = {
+        errors:[
+          'Supplier name cannot be empty!'
+        ]
+      };
+      return await next();
+    }
+    // Create new Product
+    const product = await Product.create({
+      name: ctx.request.body.name,
+      price: ctx.request.body.price,
+      parentSupplier: ctx.request.body.parentSupplier
+    });
+    // Add to parent Supplier
+    const id = ctx.request.body.parentSupplier;
+    const supplier = await Supplier.findOne({_id: id}).populate('products');
+    supplier.products = [...supplier.products, product._id];
+    await supplier.save();
+    await product.save();
+    // Return Product
+    ctx.body = product;
+    ctx.status = 201;
+  }
+  catch (error) {
+    if (error) {
+      ctx.body = error;
+      ctx.status = 400;
+    }
+  }
 }
 
 module.exports.deleteSupplier = async (ctx, next) => {

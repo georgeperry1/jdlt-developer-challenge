@@ -8,7 +8,8 @@ const Supplier = new Schema({
 
 const Product = new Schema({
   name: String,
-  price: Number
+  price: Number,
+  parentSupplier: String
 });
 
 module.exports.Supplier = mongoose.model('Supplier', Supplier);
