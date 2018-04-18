@@ -9,7 +9,7 @@ const apiService = store => next => action => {
   let newAction;
 
   // Get Suppliers
-  if (action === types.GET_SUPPLIERS) {
+  if (action.type === types.GET_SUPPLIERS) {
     fetch(API_ROOT + action.meta.params)
     .then(response => response.json())
     .then(fetchedSuppliers => {
@@ -27,25 +27,60 @@ const apiService = store => next => action => {
         }
         store.dispatch(newAction);
       }
-    })
+    });
   }
 
   // Add Supplier
-  if (action === types.ADD_SUPPLIERS) {
+  if (action.type === types.ADD_SUPPLIER) {
     fetch(API_ROOT + action.meta.params, {
       method: action.meta.method,
       header: HEADER,
       body: JSON.stringify(action.supplier),
     })
-    .then()
-    .then()
-    newAction = {
-      ...action,
-    }
-    store.dispatch(newAction);
+    .then(response => {
+      if (response.status === 404) {
+        newAction = {
+          ...action,
+          type: types.ADD_SUPPLIER_FAILURE,
+        }
+        store.dispatch(newAction);
+      }
+      return response.json();
+    })
+    .then(newSupplier => {
+      newAction = {
+        ...action,
+        type: types.ADD_SUPPLIER_SUCCESS,
+        supplier: newSupplier,
+      }
+      store.dispatch(newAction);
+    });
   }
 
-  if (action === types.DELETE_SUPPLIERS) {
+  // Delete Supplier
+  if (action.type === types.DELETE_SUPPLIER) {
+    fetch(API_ROOT + action.meta.params, {
+      method: action.meta.method,
+    })
+    .then(response => {
+      if (response.status === 200) {
+        newAction = {
+          ...action,
+          type: types.DELETE_SUPPLIER_SUCCESS,
+        }
+        store.dispatch(newAction);
+      } else {
+        newAction = {
+          ...action,
+          type: types.DELETE_SUPPLIER_FAILURE,
+        }
+        store.dispatch(newAction);
+      }
+    });
+  }
+
+  // Add Product
+  if (action.type === types.ADD_PRODUCT) {
     fetch()
     .then()
     .then()
@@ -55,17 +90,8 @@ const apiService = store => next => action => {
     store.dispatch(newAction);
   }
 
-  if (action === types.ADD_PRODUCTS) {
-    fetch()
-    .then()
-    .then()
-    newAction = {
-      ...action,
-    }
-    store.dispatch(newAction);
-  }
-
-  if (action === types.DELETE_PRODUCTS) {
+  // Delete Product
+  if (action.type === types.DELETE_PRODUCT) {
     fetch()
     .then()
     .then()
