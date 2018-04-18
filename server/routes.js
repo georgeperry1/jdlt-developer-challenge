@@ -4,7 +4,7 @@ const controller = require('./controller');
 const routes = function (app) {
   router.get('/suppliers', controller.getSuppliers);
   router.post('/suppliers', controller.addSupplier);
-  router.post('/suppliers/:productId', controller.addProduct);
+  router.post('/suppliers/:supplierId', controller.addProduct);
   router.delete('/suppliers/:supplierId', controller.deleteSupplier);
   router.delete('/suppliers/:supplierId/:productId', controller.deleteProduct);
 
