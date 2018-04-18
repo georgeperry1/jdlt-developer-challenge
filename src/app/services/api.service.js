@@ -81,24 +81,51 @@ const apiService = store => next => action => {
 
   // Add Product
   if (action.type === types.ADD_PRODUCT) {
-    fetch()
-    .then()
-    .then()
-    newAction = {
-      ...action,
-    }
-    store.dispatch(newAction);
+    fetch(API_ROOT + action.meta.params, {
+      method: action.meta.method,
+      header: HEADER,
+      body: JSON.stringify(action.product),
+    })
+    .then(response => {
+      if (response.status === 404) {
+        newAction = {
+          ...action,
+          type: types.ADD_PRODUCT_FAILURE,
+        }
+        store.dispatch(newAction);
+      }
+      return response.json();
+    })
+    .then(newProduct => {
+      newAction = {
+        ...action,
+        type: types.ADD_PRODUCT_SUCCESS,
+        product: newProduct,
+      }
+      store.dispatch(newAction);
+    });
   }
 
   // Delete Product
   if (action.type === types.DELETE_PRODUCT) {
-    fetch()
-    .then()
-    .then()
-    newAction = {
-      ...action,
-    }
-    store.dispatch(newAction);
+    fetch(API_ROOT + action.meta.params, {
+      method: action.meta.method,
+    })
+    .then(response => {
+      if (response.status === 200) {
+        newAction = {
+          ...action,
+          type: types.DELETE_PRODUCT_SUCCESS,
+        }
+        store.dispatch(newAction);
+      } else {
+        newAction = {
+          ...action,
+          type: types.DELETE_PRODUCT_FAILURE,
+        }
+        store.dispatch(newAction);
+      }
+    });
   }
   return next(action);
 }
