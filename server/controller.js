@@ -116,4 +116,31 @@ module.exports.deleteSupplier = async (ctx, next) => {
 
 module.exports.deleteProduct = async (ctx, next) => {
   if ('DELETE' != ctx.method) return await next();
+  try {
+    // Remove Supplier from DB
+    const supplierId = ctx.params.supplierId;
+    const productId = ctx.params.productId;
+    // Delete Product
+    const product = await Product.findOneAndRemove({
+      _id: productId
+    });
+    // Remove product ID from supplier
+    const supplier = await Supplier.findOne({
+      _id: supplierId
+    });
+    supplier.products = supplier.products.filter(product => {
+      return product._id !== productId;
+    });
+    await supplier.save();
+    // Return Suppliers
+    ctx.body = `${product.name} has been successfully deleted!`;
+    ctx.status = 200;
+  }
+  catch (error) {
+    if (error) {
+      console.log('Error:', error);
+      ctx.body = error;
+      ctx.status = 400;
+    }
+  }
 }
