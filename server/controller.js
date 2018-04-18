@@ -96,15 +96,18 @@ module.exports.addProduct = async (ctx, next) => {
 module.exports.deleteSupplier = async (ctx, next) => {
   if ('DELETE' != ctx.method) return await next();
   try {
-    const supplierToBeDeleted = ctx.params.supplierId;
-    const suppliers = await Supplier.findOneAndRemove({
-      _id: supplierToBeDeleted,
+    // Remove Supplier from DB
+    const id = ctx.params.supplierId;
+    const supplier = await Supplier.findOneAndRemove({
+      _id: id
     });
-    await suppliers.save();
-    ctx.status = 204;
+    // Return Suppliers
+    ctx.body = `${supplier.name} has been successfully deleted!`;
+    ctx.status = 200;
   }
   catch (error) {
     if (error) {
+      console.log('Error:', error);
       ctx.body = error;
       ctx.status = 400;
     }
