@@ -36,7 +36,7 @@ class SuppliersComponent extends Component {
       <div className="add-supplier-container">
         <button
           className="add-supplier-button"
-          //onClick={this.showCreateSupplierWindow()}
+          onClick={this.showCreateSupplierWindow}
         >
           +
         </button>
@@ -44,11 +44,11 @@ class SuppliersComponent extends Component {
     )
   }
 
-  // showCreateSupplierWindow = () => {
-  //   this.setState({
-  //     showWindow:!this.state.showWindow
-  //   });
-  // }
+  showCreateSupplierWindow = () => {
+    this.setState({
+      showWindow: true
+    });
+  }
 
   renderLoading = () => <Loader />;
 
@@ -74,7 +74,6 @@ class SuppliersComponent extends Component {
 
 SuppliersComponent.propTypes = {
   suppliers: PropTypes.array,
-  products: PropTypes.array,
   isFetching: PropTypes.bool,
   getSuppliers: PropTypes.func,
   addSuppliers: PropTypes.func,
@@ -82,7 +81,6 @@ SuppliersComponent.propTypes = {
 
 const mapStateToProps = state => ({
   suppliers: state.suppliers,
-  products: state.products,
   isFetching: state.isFetching,
 });
 

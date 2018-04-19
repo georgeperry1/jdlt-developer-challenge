@@ -5,7 +5,7 @@ import './SuppliersListItemComponent.css';
 
 const SuppliersListItemComponent = ({ supplier }) => (
   <div>
-    <h3>{supplier.name}</h3>
+    <p>{supplier.name}</p>
   </div>
 );
 
