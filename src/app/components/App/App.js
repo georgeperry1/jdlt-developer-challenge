@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import AppHeader from '../AppHeader';
-import SuppliersComponent from '../SuppliersComponent';
+import Suppliers from '../Suppliers';
 import * as actions from '../../store/actions';
 
 import './App.css';
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="app">
         <AppHeader />
-        <SuppliersComponent />
+        <Suppliers />
       </div>
     );
   }

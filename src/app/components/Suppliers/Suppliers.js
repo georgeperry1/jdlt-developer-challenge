@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 import * as actions from '../../store/actions';
 import Loader from '../Loader';
-import SuppliersListComponent from '../SuppliersListComponent';
+import SuppliersList from '../SuppliersList';
 
-import './SuppliersComponent.css';
+import './Suppliers.css';
 
-class SuppliersComponent extends Component {
+class Suppliers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +27,7 @@ class SuppliersComponent extends Component {
       return <h3>No suppliers, please create one</h3>;
     }
     return (
-      <SuppliersListComponent suppliers={suppliers} />
+      <SuppliersList suppliers={suppliers} />
     );
   }
 
@@ -72,7 +72,7 @@ class SuppliersComponent extends Component {
   }
 }
 
-SuppliersComponent.propTypes = {
+Suppliers.propTypes = {
   suppliers: PropTypes.array,
   isFetching: PropTypes.bool,
   getSuppliers: PropTypes.func,
@@ -89,4 +89,4 @@ const mapDispatchToProps = dispatch => ({
   addSupplier: () => dispatch(actions.addSupplier()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SuppliersComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Suppliers);
