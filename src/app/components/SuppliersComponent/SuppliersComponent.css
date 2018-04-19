@@ -1,7 +1,20 @@
 .suppliers-container {
+  display: flex;
   height: 80vh;
   flex: 3;
   border-radius: 5px;
   margin: 32px;
   background: #f6f5f5;
+}
+
+.suppliers-container-header {
+
+}
+
+.add-supplier-container {
+
+}
+
+.add-supplier-button {
+
 }
