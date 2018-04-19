@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import * as actions from '../../store/actions';
 import Loader from '../Loader';
 import SuppliersList from '../SuppliersList';
+import CreateSupplier from '../CreateSupplier';
 
 import './Suppliers.css';
 
@@ -45,9 +46,19 @@ class Suppliers extends Component {
   }
 
   showCreateSupplierWindow = () => {
+    console.log('Click:', this.state.showWindow);
     this.setState({
-      showWindow: true
+      showWindow: !this.state.showWindow
     });
+    return (
+      <div>
+        {this.state.showWindow ? (
+          <div>
+            <CreateSupplier />
+          </div>
+        )  : null }
+      </div>
+    )
   }
 
   renderLoading = () => <Loader />;
@@ -86,7 +97,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getSuppliers: () => dispatch(actions.getSuppliers()),
-  addSupplier: () => dispatch(actions.addSupplier()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Suppliers);
