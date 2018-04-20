@@ -50,15 +50,6 @@ class Suppliers extends Component {
     this.setState({
       showWindow: !this.state.showWindow
     });
-    return (
-      <div>
-        {this.state.showWindow ? (
-          <div>
-            <CreateSupplier />
-          </div>
-        )  : null }
-      </div>
-    )
   }
 
   renderLoading = () => <Loader />;
@@ -78,6 +69,11 @@ class Suppliers extends Component {
             {this.renderSuppliersList()}
           </div>
         )}
+        {this.state.showWindow ? (
+          <div>
+            <CreateSupplier />
+          </div>
+        )  : null }
       </div>
     );
   }
