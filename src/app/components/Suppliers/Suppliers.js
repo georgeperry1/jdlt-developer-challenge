@@ -46,7 +46,6 @@ class Suppliers extends Component {
   }
 
   showCreateSupplierWindow = () => {
-    console.log('Click:', this.state.showWindow);
     this.setState({
       showWindow: !this.state.showWindow
     });

@@ -13,8 +13,14 @@ class CreateSupplier extends Component {
 
   render() {
    return (
-     <div>
-       <h1>CreateSupplier</h1>
+     <div className="create-supplier-modal">
+       <h1>Create a new Supplier:</h1>
+       <form className="create-supplier-form">
+         <label className="create-supplier-label">Name:</label>
+         <input className="create-supplier-input"></input>
+         <label className="create-supplier-label">Description:</label>
+         <textarea className="create-supplier-textarea"></textarea>
+       </form>
      </div>
    )
   }
