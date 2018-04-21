@@ -35,21 +35,12 @@ module.exports.addSupplier = async (ctx, next) => {
     // Create new Supplier
     const supplier = await Supplier.create({
       name: ctx.request.body.name,
+      description: ctx.request.body.description
     });
-    // Create products added with Supplier
-    const promises = await ctx.request.body.products.map(product => Product.create({
-      name: product.name,
-      price: product.price
-    }));
-    // Map product IDs to supplier
-    const products = await Promise.all(promises);
-    supplier.products = products.map(product => product._id);
     await supplier.save();
+    const suppliers = await Supplier.find();
     // Return supplier
-    ctx.body = {
-      suppliers,
-      products
-    };
+    ctx.body = suppliers;
     ctx.status = 201;
   }
   catch (error) {

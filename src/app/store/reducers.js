@@ -33,8 +33,7 @@ export default (state = defaultState, action) => {
     case types.ADD_SUPPLIER_SUCCESS:
       return {
         ...state,
-        suppliers: [...state.suppliers, action.supplier],
-        products: [...state.products, action.products],
+        suppliers: action.suppliers,
         isFetching: false,
       }
     case types.ADD_SUPPLIER_FAILURE:

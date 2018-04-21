@@ -48,12 +48,11 @@ const apiService = store => next => action => {
       }
       return response.json();
     })
-    .then(newSupplier => {
+    .then(newSuppliers => {
       newAction = {
         ...action,
         type: types.ADD_SUPPLIER_SUCCESS,
-        supplier: newSupplier.supplier,
-        products: newSupplier.products
+        suppliers: newSuppliers,
       }
       store.dispatch(newAction);
     });
