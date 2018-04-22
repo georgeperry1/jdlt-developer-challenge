@@ -1,7 +1,14 @@
 .supplier-item {
+  height: 50px;
   display: flex;
   flex: auto;
   flex-direction: row;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
+  border: 1px solid #e1e2e3;
+  margin: 8px 4px;
+  padding: 8px;
 }
 
 .supplier-item-name {
@@ -10,4 +17,5 @@
 
 .supplier-item-button {
   flex: 1;
+  cursor: pointer;
 }

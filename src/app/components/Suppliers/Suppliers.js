@@ -58,7 +58,7 @@ class Suppliers extends Component {
     return (
       <div className="suppliers-container">
         <div className="suppliers-container-header">
-          <h2>Suppliers</h2>
+          <p>Suppliers</p>
           {this.renderCreateSupplierButton()}
         </div>
         {isFetching ? (
