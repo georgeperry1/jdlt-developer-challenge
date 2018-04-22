@@ -1,0 +1,13 @@
+.supplier-item {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
+
+.supplier-item-name {
+  flex: 7;
+}
+
+.supplier-item-button {
+  flex: 1;
+}

@@ -14,9 +14,9 @@ class SuppliersListItem extends Component {
   render() {
     const  { supplier } = this.props;
     return (
-      <div>
-        <p>{supplier.name}</p>
-        <button onClick={this.handleClick}>X</button>
+      <div className="supplier-item">
+        <p className="supplier-item-name">{supplier.name}</p>
+        <button className="supplier-item-button" onClick={this.handleClick}>X</button>
       </div>
     )
   }

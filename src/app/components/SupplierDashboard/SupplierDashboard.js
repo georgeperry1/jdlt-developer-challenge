@@ -31,8 +31,4 @@ const mapStateToProps = state => ({
   isFetching: state.isFetching,
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   getSuppliers: () => dispatch(actions.getSuppliers()),
-// });
-
 export default connect(mapStateToProps, null)(SupplierDashboard);

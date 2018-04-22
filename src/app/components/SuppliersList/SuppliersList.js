@@ -12,7 +12,7 @@ const renderSuppliers = (suppliers) => {
 };
 
 const SuppliersList = ({ suppliers }) => (
-  <div>
+  <div className="supplier-list">
     {renderSuppliers(suppliers)}
   </div>
 );

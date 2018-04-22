@@ -5,6 +5,7 @@
   flex: 3;
   border-radius: 5px;
   margin: 32px 16px 32px 32px;
+  padding: 8px;
   background: #f6f5f5;
   box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
 }
@@ -12,16 +13,20 @@
 .suppliers-container-header {
   display: flex;
   flex-direction: row;
+  padding: 8px;
 }
 
 .suppliers-container-header h2 {
-  flex: 3;
+  flex: 7;
 }
 
 .add-supplier-container {
+  display: flex;
+  justify-content: center;
   flex: 1;
 }
 
 .add-supplier-button {
+  width: 100%;
   cursor: pointer;
 }
