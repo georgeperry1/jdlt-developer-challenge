@@ -7,8 +7,17 @@ import * as actions from '../../store/actions';
 import './CreateSupplier.css';
 
 class CreateSupplier extends Component {
-  handleClick() {
-    this.props.addSupplier();
+
+  handleClick = (event) => {
+    event.preventDefault();
+    const newSupplierInfo = {
+      name: this.name.value,
+      description: this.description.value,
+    };
+    this.props.addSupplier(newSupplierInfo);
+    this.name.value = null;
+    this.description.value = null;
+    this.props.hide();
   }
 
   render() {
@@ -16,10 +25,27 @@ class CreateSupplier extends Component {
      <div className="create-supplier-modal">
        <h1>Create a new Supplier:</h1>
        <form className="create-supplier-form">
-         <label className="create-supplier-label">Name:</label>
-         <input className="create-supplier-input"></input>
-         <label className="create-supplier-label">Description:</label>
-         <textarea className="create-supplier-textarea"></textarea>
+         <label className="create-supplier-label">
+           Name:
+           <input
+             className="create-supplier-input"
+             onChange={this.handleNameChange}
+             type="text"
+             ref={(input) => {this.name = input}}
+             required
+           />
+         </label>
+         <label className="create-supplier-label">
+           Description:
+           <textarea
+             className="create-supplier-textarea"
+             onChange={this.handleDescriptionChange}
+             type="text"
+             ref={(input) => {this.description = input}}
+             required
+           />
+         </label>
+         <button onClick={this.handleClick}>Create</button>
        </form>
      </div>
    )

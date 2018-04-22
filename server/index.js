@@ -1,6 +1,6 @@
 const koa = require('koa');
 const app = module.exports = new koa();
-const bodyParser = require('koa-bodyparser');
+const bodyParser = require('koa-body');
 const compress = require('koa-compress');
 const cors = require('kcors');
 const logger = require('koa-logger');
@@ -12,7 +12,9 @@ require('./db');
 //Middleware
 app.use(logger());
 app.use(cors());
-app.use(bodyParser());
+app.use(bodyParser({
+  multipart: true
+}));
 routes(app);
 app.use(serve(path.join(__dirname, 'public')));
 app.use(compress());

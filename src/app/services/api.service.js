@@ -1,9 +1,6 @@
 import * as types from '../store/actionTypes';
 
 const API_ROOT = 'http://localhost:3000';
-const HEADER = {
-  'Content-Type': 'application/json'
-};
 
 const apiService = store => next => action => {
   let newAction;
@@ -34,9 +31,12 @@ const apiService = store => next => action => {
   // Add Supplier
   if (action.type === types.ADD_SUPPLIER) {
     fetch(API_ROOT + action.meta.params, {
-      method: action.meta.method,
-      header: HEADER,
-      body: JSON.stringify(action.supplier),
+      method: 'POST',
+      header: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(action.supplier)
     })
     .then(response => {
       if (response.status === 404) {
@@ -88,7 +88,10 @@ const apiService = store => next => action => {
   if (action.type === types.ADD_PRODUCT) {
     fetch(API_ROOT + action.meta.params, {
       method: action.meta.method,
-      header: HEADER,
+      header: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(action.product),
     })
     .then(response => {

@@ -1,5 +1,9 @@
 const { Supplier, Product } = require('./model');
 
+const cleanBody = body => {
+  return typeof body !== 'object' ? JSON.parse(body) : body;
+};
+
 module.exports.getSuppliers = async (ctx, next) => {
   if ('GET' != ctx.method) return await next();
   try {
@@ -23,19 +27,20 @@ module.exports.getSuppliers = async (ctx, next) => {
 module.exports.addSupplier = async (ctx, next) => {
   if ('POST' != ctx.method) return await next();
   try {
-    if (!ctx.request.body.name) {
+    const data = cleanBody(ctx.request.body);
+    if (!data.name) {
       ctx.status = 404
       ctx.body = {
         errors:[
-          'Supplier name cannot be empty!'
+          'Supplier cannot be empty!'
         ]
       };
       return await next();
     }
     // Create new Supplier
     const supplier = await Supplier.create({
-      name: ctx.request.body.name,
-      description: ctx.request.body.description
+      name: data.name,
+      description: data.description
     });
     await supplier.save();
     const suppliers = await Supplier.find();

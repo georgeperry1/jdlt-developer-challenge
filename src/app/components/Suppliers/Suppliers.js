@@ -70,7 +70,7 @@ class Suppliers extends Component {
         )}
         {this.state.showWindow ? (
           <div>
-            <CreateSupplier />
+            <CreateSupplier hide={this.showCreateSupplierWindow}/>
           </div>
         )  : null }
       </div>
