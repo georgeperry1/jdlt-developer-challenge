@@ -1,0 +1,10 @@
+.supplier-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  flex: 6;
+  border-radius: 5px;
+  margin: 32px 32px 32px 16px;
+  background: #f6f5f5;
+  box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
+}

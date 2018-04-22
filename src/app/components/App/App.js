@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import AppHeader from '../AppHeader';
 import Suppliers from '../Suppliers';
+import SupplierDashboard from '../SupplierDashboard';
 import * as actions from '../../store/actions';
 
 import './App.css';
@@ -14,6 +15,7 @@ class App extends Component {
       <div className="app">
         <AppHeader />
         <Suppliers />
+        <SupplierDashboard />
       </div>
     );
   }

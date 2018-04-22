@@ -4,8 +4,9 @@
   height: 80vh;
   flex: 3;
   border-radius: 5px;
-  margin: 32px;
+  margin: 32px 16px 32px 32px;
   background: #f6f5f5;
+  box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
 }
 
 .suppliers-container-header {
