@@ -14,7 +14,7 @@ class SuppliersListItem extends Component {
   render() {
     const  { supplier } = this.props;
     return (
-      <div className="supplier-item">
+      <div className="supplier-item bobble">
         <img
           className="supplier-item-image"
           src={require('../../assets/images/factory.png')}
@@ -23,7 +23,7 @@ class SuppliersListItem extends Component {
         <p className="supplier-item-name">{supplier.name}</p>
         <button className="supplier-item-button" onClick={this.handleClick}>
           <img
-            className="supplier-item-delete" 
+            className="supplier-item-delete"
             src={require('../../assets/images/error.png')}
             alt="Delete"
           />
