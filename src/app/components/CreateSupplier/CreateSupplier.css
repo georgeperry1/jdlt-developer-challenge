@@ -1,19 +1,75 @@
-.create-supplier-modal {
+.create-supplier-window {
+  width: 100vw;
+  height: 90vh;
+  background: rgba(0, 0, 0, 0.60);
+  position: absolute;
+  margin: -363px -48px;
+}
 
+.create-supplier-modal {
+  display: flex;
+  flex-direction: column;
+  height: 35vh;
+  width: 40vw;
+  margin: 10% 30%;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
+  border: 1px solid #e1e2e3;
+  padding: 8px;
+}
+
+.create-supplier-header {
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+}
+
+.create-supplier-header p {
+  flex: 7;
+}
+
+.create-supplier-close {
+  flex: 1;
+  cursor: pointer;
 }
 
 .create-supplier-form {
-
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
 }
 
 .create-supplier-label {
-
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 8px;
 }
 
 .create-supplier-input {
-
+  border: 1px solid #e1e2e3;
+  border-radius: 5px;
+  margin: 0px 8px;
+  padding: 4px;
+  width: 90%;
 }
 
 .create-supplier-textarea {
-  
+  border: 1px solid #e1e2e3;
+  border-radius: 5px;
+  margin: 0px 8px;
+  padding: 4px;
+  width: 80%;
+}
+
+.create-supplier-button {
+  height: 30px;
+  width: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: linear-gradient(to right, #407ff7, #50a3f9);
+  color: #ffffff;
+  font-size: 16px;
+  margin: 8px 0px;
 }

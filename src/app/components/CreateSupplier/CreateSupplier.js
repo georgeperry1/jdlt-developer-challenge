@@ -20,33 +20,42 @@ class CreateSupplier extends Component {
     this.props.hide();
   }
 
+  handleClose = () => {
+    this.props.hide();
+  }
+
   render() {
    return (
-     <div className="create-supplier-modal">
-       <h1>Create a new Supplier:</h1>
-       <form className="create-supplier-form">
-         <label className="create-supplier-label">
-           Name:
-           <input
-             className="create-supplier-input"
-             onChange={this.handleNameChange}
-             type="text"
-             ref={(input) => {this.name = input}}
-             required
-           />
-         </label>
-         <label className="create-supplier-label">
-           Description:
-           <textarea
-             className="create-supplier-textarea"
-             onChange={this.handleDescriptionChange}
-             type="text"
-             ref={(input) => {this.description = input}}
-             required
-           />
-         </label>
-         <button onClick={this.handleClick}>Create</button>
-       </form>
+     <div className="create-supplier-window">
+       <div className="create-supplier-modal">
+         <div className="create-supplier-header">
+           <p>Create a new Supplier:</p>
+           <button className="create-supplier-close" onClick={this.handleClose}>x</button>
+         </div>
+         <form className="create-supplier-form">
+           <label className="create-supplier-label">
+             Name:
+             <input
+               className="create-supplier-input"
+               onChange={this.handleNameChange}
+               type="text"
+               ref={(input) => {this.name = input}}
+               required
+             />
+           </label>
+           <label className="create-supplier-label">
+             Description:
+             <textarea
+               className="create-supplier-textarea"
+               onChange={this.handleDescriptionChange}
+               type="text"
+               ref={(input) => {this.description = input}}
+               required
+             />
+           </label>
+           <button className="create-supplier-button" onClick={this.handleClick}>Create</button>
+         </form>
+       </div>
      </div>
    )
   }

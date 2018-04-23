@@ -15,8 +15,19 @@ class SuppliersListItem extends Component {
     const  { supplier } = this.props;
     return (
       <div className="supplier-item">
+        <img
+          className="supplier-item-image"
+          src={require('../../assets/images/factory.png')}
+          alt="Supplier Logo"
+        />
         <p className="supplier-item-name">{supplier.name}</p>
-        <button className="supplier-item-button" onClick={this.handleClick}>X</button>
+        <button className="supplier-item-button" onClick={this.handleClick}>
+          <img
+            className="supplier-item-delete" 
+            src={require('../../assets/images/error.png')}
+            alt="Delete"
+          />
+        </button>
       </div>
     )
   }

@@ -9,13 +9,30 @@
   border: 1px solid #e1e2e3;
   margin: 8px 4px;
   padding: 8px;
+  align-items: center;
+  color: #636363;
+}
+
+.supplier-item-image {
+  height: 40px;
+  flex: 1;
+  margin: 0px 0px 0px 8px;
 }
 
 .supplier-item-name {
   flex: 7;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
 }
 
 .supplier-item-button {
+  display: flex;
   flex: 1;
   cursor: pointer;
+}
+
+.supplier-item-delete {
+  align-items: center;
+  height: 20px;
 }
