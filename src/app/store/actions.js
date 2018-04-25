@@ -53,3 +53,10 @@ export const deleteProduct = (supplierId, productId) => {
     productId,
   }
 };
+
+export const selectSupplier = (supplierId) => {
+  return {
+    type: types.SELECT_SUPPLIER,
+    supplierId,
+  }
+};

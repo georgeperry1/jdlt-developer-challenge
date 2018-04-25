@@ -47,7 +47,7 @@ SuppliersListItem.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   deleteSupplier: (supplierId) => dispatch(actions.deleteSupplier(supplierId)),
-  selectSupplier: (supplierId) => dispatch(actions.deleteSupplier(supplierId))
+  selectSupplier: (supplierId) => dispatch(actions.selectSupplier(supplierId))
 })
 
 export default connect(null, mapDispatchToProps)(SuppliersListItem);
