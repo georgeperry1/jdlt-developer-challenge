@@ -4,6 +4,7 @@ const defaultState = {
   isFetching: false,
   suppliers: [],
   products: [],
+  selected: '',
 };
 
 export default (state = defaultState, action) => {
@@ -91,6 +92,11 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         isFetching: false,
+      }
+    case types.SELECT_SUPPLIER:
+      return {
+        ...state,
+        selected: action.supplierId,
       }
     default:
       return state;
