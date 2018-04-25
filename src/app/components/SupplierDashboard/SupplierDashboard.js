@@ -15,7 +15,7 @@ class SupplierDashboard extends Component {
     const { isFetching } = this.props;
     return (
       <div className="supplier-dashboard-container">
-        <h1>Hello</h1>
+        
       </div>
     );
   }

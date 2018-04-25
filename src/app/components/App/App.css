@@ -11,6 +11,8 @@
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+  max-height: 100vh;
+  align-items: start;
   background: linear-gradient(to right, #407ff7, #2ef081);
 }
 

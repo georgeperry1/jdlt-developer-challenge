@@ -1,13 +1,16 @@
 .suppliers-container {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  min-height: 90%;
+  height: 75vh;
+  max-height: 75vh;
   flex: 3;
   border-radius: 5px;
-  margin: 32px 16px 32px 32px;
+  margin: 32px 16px 16px 32px;
   padding: 16px;
   background: #f6f5f5;
   box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
+  overflow: hidden;
 }
 
 .suppliers-container-header {
@@ -31,11 +34,19 @@
 }
 
 .add-supplier-button {
-  height: 35px;
+  height: 40px;
   width: 100%;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 50%;
+  border: 1px solid #50a3f9;
   background: linear-gradient(to right, #407ff7, #50a3f9);
   color: #ffffff;
-  font-size: 20px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  box-shadow: 0 3px 3px 0 rgba(59,59,88,.15);
+}
+
+.add-supplier-button:hover {
+  background: linear-gradient(to right, #3a77e9, #4897e8);
 }
