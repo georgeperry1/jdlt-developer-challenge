@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './SupplierDetails.css';
 
@@ -19,5 +20,9 @@ const SupplierDetails = ({ supplier }) => (
     </div>
   </div>
 );
+
+SupplierDetails.propTypes = {
+  supplier: PropTypes.object,
+};
 
 export default SupplierDetails;
