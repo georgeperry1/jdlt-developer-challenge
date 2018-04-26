@@ -25,42 +25,6 @@
   align-items: center;
 }
 
-.supplier-dashboard-details-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.supplier-dashboard-details-image {
-  flex: 1;
-  margin: 16px;
-  height: 100px;
-}
-
-.supplier-dashboard-details-info {
-  display: flex;
-  flex-direction: column;
-  flex: 5;
-  margin: 8px;
-}
-
-.supplier-dashboard-details-header {
-  margin: 16px 0px 8px 0px;
-}
-
-.supplier-dashboard-details-divider {
-  height: 1px;
-  border-top: 1px solid #e1e2e3;
-  margin: 0px 0px 8px 0px;
-}
-
-.supplier-dashboard-details-description {
-  margin: 8px 0px;
-  color: rgb(130, 130, 130);
-  font-weight: 300;
-  font-size: 14px;
-}
-
 .supplier-dashboard-products {
   flex: 2;
   background: rgb(255, 255, 255);

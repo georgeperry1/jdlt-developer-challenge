@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import * as actions from '../../store/actions';
 import Loader from '../Loader';
+import SupplierDetails from '../SupplierDetails';
 
 import './SupplierDashboard.css';
 
@@ -19,21 +20,7 @@ class SupplierDashboard extends Component {
     return (
       <div>
         {selected !== '' ?
-          <div className="supplier-dashboard-details-container">
-            <img
-              className="supplier-dashboard-details-image"
-              src={require('../../assets/images/factory.png')}
-              alt="Supplier Logo"
-            />
-            <div className="supplier-dashboard-details-info">
-              <p className="supplier-dashboard-details-header">{selectedSupplier[0].name}</p>
-              <div className="supplier-dashboard-details-divider"></div>
-              <p className="supplier-dashboard-details-description">{selectedSupplier[0].description}</p>
-              <p className="supplier-dashboard-details-header">Number of Products:</p>
-              <div className="supplier-dashboard-details-divider"></div>
-              <p className="supplier-dashboard-details-description">{selectedSupplier[0].products.length}</p>
-            </div>
-          </div>
+          <SupplierDetails supplier={selectedSupplier[0]} />
         :
         <div>
           <p>Please selected a supplier</p>
