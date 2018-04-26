@@ -18,7 +18,7 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         suppliers: action.suppliers,
-        products: [...state.products, action.products],
+        products: action.products,
         isFetching: false,
       }
     case types.GET_SUPPLIERS_FAILURE:

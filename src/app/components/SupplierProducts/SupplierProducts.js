@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import idToKey from 'id-to-key';
 
 import './SupplierProducts.css';
 
 class SupplierProducts extends Component {
 
-  renderProducts = (supplier) => {
-    const { products } = this.props;
-    const supplierProducts = supplier.products.map(productId => {
-      const product = products[productId];
+  renderProducts = (supplier, products) => {
+    const productsWithIdsAsKeys = idToKey(products);
+    return supplier.products.map(productId => {
+      const product = productsWithIdsAsKeys[productId];
       return (
-        <tr>
+        <tr key={product.name}>
           <td>{product.name}</td>
           <td>{product.price}</td>
         </tr>
@@ -21,6 +22,7 @@ class SupplierProducts extends Component {
 
   render() {
     const { supplier } = this.props;
+    const { products } = this.props;
     return (
       <div className="supplier-products-container">
         {supplier.products.length ?
@@ -32,7 +34,7 @@ class SupplierProducts extends Component {
                   <th>Name</th>
                   <th>Price</th>
                 </tr>
-                {this.renderProducts(supplier)}
+                {this.renderProducts(supplier, products)}
               </tbody>
             </table>
           </div>
@@ -53,6 +55,6 @@ SupplierProducts.propTypes = {
 
 const mapStateToProps = state => ({
   products: state.products,
-});git
+});
 
 export default connect(mapStateToProps, null)(SupplierProducts);
