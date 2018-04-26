@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import * as actions from '../../store/actions';
 import Loader from '../Loader';
 import SupplierDetails from '../SupplierDetails';
+import SupplierProducts from '../SupplierProducts';
 
 import './SupplierDashboard.css';
 
@@ -16,34 +17,35 @@ class SupplierDashboard extends Component {
     const selectedSupplier = suppliers.filter(supplier => {
       return supplier._id === selected;
     });
-    console.log('Selected:', selectedSupplier[0]);
     return (
       <div>
         {selected !== '' ?
-          <SupplierDetails supplier={selectedSupplier[0]} />
+          <div>
+            <div className="supplier-dashboard-details">
+              <SupplierDetails supplier={selectedSupplier[0]} />
+            </div>
+            <div className="supplier-dashboard-products">
+              <SupplierProducts supplier={selectedSupplier[0]} />
+            </div>
+          </div>
         :
         <div>
           <p>Please selected a supplier</p>
         </div>}
       </div>
-    )
-  }
+      )
+    }
 
-  renderLoading = () => <Loader />;
+    renderLoading = () => <Loader />;
 
-  render() {
-    const { selected } = this.props;
-    return (
-      <div className="supplier-dashboard-container">
-        <div className="supplier-dashboard-details">
+    render() {
+      const { selected } = this.props;
+      return (
+        <div className="supplier-dashboard-container">
           {this.renderSelectedSupplier()}
         </div>
-        <div className="supplier-dashboard-products">
-
-        </div>
-      </div>
-    );
-  }
+      );
+    }
 }
 
 SupplierDashboard.propTypes = {
